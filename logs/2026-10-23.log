@@ -20,3 +20,7 @@
 2026-10-23 13:33:20.070, [ERROR], "validate.js","validationMiddleware()","Validation failed for /api/v1/tasks?page=1&limit=100&status=all&category=all&priority=all&sortBy=createdAt&sortOrder=desc: "limit" must be less than or equal to 50"
 2026-10-23 13:33:20.075, [INFO], "http","request","GET /api/v1/tasks?page=1&limit=100&status=all&category=all&priority=all&sortBy=createdAt&sortOrder=desc 400 183 - 75.532 ms"
 2026-10-23 13:33:20.239, [INFO], "http","request","GET /api/v1/analytics/weekly 200 680 - 212.965 ms"
+2026-10-23 13:33:30.442, [INFO], "db.js","connectDB()","MongoDB Connected: ac-h9kqfwy-shard-00-02.ozc8lus.mongodb.net/taskify"
+2026-10-23 13:33:30.449, [INFO], "db.js","connectDB()","MongoDB Connected: ac-h9kqfwy-shard-00-02.ozc8lus.mongodb.net/taskify"
+2026-10-23 13:33:31.130, [INFO], "seed.js","seedData()","Seeding completed successfully"
+2026-10-23 13:33:31.138, [INFO], "server.js","startServer()","Taskify Backend API is running on http://localhost:5000 in development mode"
