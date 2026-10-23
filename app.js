@@ -14,10 +14,27 @@ const app = express();
 app.use(helmet());
 app.disable('x-powered-by');
 
-// CORS configuration allowing frontend clients
+// CORS configuration supporting production and local frontend origins
+const rawOrigins = config.corsOrigin || '*';
+const allowedOrigins = rawOrigins.split(',').map((o) => o.trim().replace(/\/$/, ''));
+
 app.use(
   cors({
-    origin: config.corsOrigin === '*' ? true : config.corsOrigin,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl, postman)
+      if (!origin) return callback(null, true);
+
+      const normalizedOrigin = origin.replace(/\/$/, '');
+      if (
+        allowedOrigins.includes('*') ||
+        allowedOrigins.includes(normalizedOrigin) ||
+        config.env === 'development'
+      ) {
+        return callback(null, true);
+      }
+
+      return callback(null, true);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
